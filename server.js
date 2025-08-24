@@ -18,6 +18,8 @@ app.use(express.json());
 app.use(morgan("dev"));
 
 //rutas
+app.use("/api/v1/clientes", require("./routes/clientRoutes"));
+
 app.get("/test", (req, res) => {
   res.status(200).send("<h1>ClientesCRUD APP</h1>");
 });
