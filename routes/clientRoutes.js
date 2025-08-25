@@ -10,7 +10,7 @@ const {
 //router object
 const router = express.Router();
 
-//Rutas
+//Rutas para cada funcionalidad de la API desde ellas se cargan los metodos del archivo controller
 
 //Obtener Clientes (GET)
 router.get("/getall", getClients);

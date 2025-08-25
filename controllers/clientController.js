@@ -3,13 +3,16 @@ const db = require("../config/db");
 //Obtener lista de clientes (GET)
 const getClients = async (req, res) => {
   try {
+    //variable que guarda la sentencia SQl que trae la totalidad de datos
     const data = await db.query("SELECT * FROM cliente");
+    //Verifica si existen datos en caso de que no lanza error 404
     if (!data) {
       return res.status(404).send({
         sucess: false,
         message: "No se encuentran registros",
       });
     }
+    //trae el listado de datos e informa que se hizo de forma sactisfactoria
     res.status(200).send({
       success: true,
       message: "Lista de clientes registrados",
@@ -98,7 +101,7 @@ const createClient = async (req, res) => {
 //Actualizar Estudiantes (PUT)
 const updateClient = async (req, res) => {
   try {
-    const clienteId = req.params.id;
+    const clienteId = req.params.id; //obtiene el id ingresado en la url
     if (!clienteId) {
       return res.status(404).send({
         success: false,
@@ -106,17 +109,19 @@ const updateClient = async (req, res) => {
       });
     }
     const { nombre, ciudad, direccion, telefono } = req.body;
+    //Sentencia SQL que se envia a la BD
     const data = await db.query(
       `UPDATE cliente SET nombre = ?, ciudad = ?, direccion = ?, telefono = ? WHERE id_cliente = ?`,
       [nombre, ciudad, direccion, telefono, clienteId]
     );
+    //Verifica si los datos estan completos
     if (!data) {
       return res.status(500).send({
         success: false,
         message: "Error actualizando datos",
       });
     }
-
+    //Verificacion si el Id existe en la bd y se realizo la actualizacion
     if (data[0].affectedRows === 0) {
       return res.status(404).send({
         success: false,
@@ -124,7 +129,7 @@ const updateClient = async (req, res) => {
           "No se encontró un cliente con la cédula proporcionada o no se realizaron cambios.",
       });
     }
-
+    //Alerta de actualizacion realizada
     res.status(200).send({
       success: true,
       message: "cliente actualizado correctamente",
@@ -150,23 +155,25 @@ const deleteClient = async (req, res) => {
         message: "Escriba un numero de identificacion valido",
       });
     }
-
+    //Sentencia SQL que envia la orden de eliminar a la BD
     const [result] = await db.query(
       `DELETE FROM cliente WHERE id_cliente = ?`,
       [clientId]
     );
+    //Verificacion si existe la cedula en la BD y se elimino o no
     if (result.affectedRows === 0) {
       return res.status(404).send({
         success: false,
         message: "No se encontró un cliente con esa identificación.",
       });
     }
-
+    //Aviso de eliminacion sactisfactoria
     res.status(200).send({
       success: true,
       messag: "Cliente eliminado correctamente",
     });
   } catch (error) {
+    //Manejo de error
     console.log(error);
     res.status(500),
       send({
@@ -176,7 +183,7 @@ const deleteClient = async (req, res) => {
       });
   }
 };
-
+//Exportacion de modulos para uso en otros archivos como en las rutas
 module.exports = {
   getClients,
   getClientById,

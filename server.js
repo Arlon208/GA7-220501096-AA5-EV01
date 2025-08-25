@@ -17,7 +17,7 @@ const app = express();
 app.use(express.json());
 app.use(morgan("dev"));
 
-//rutas
+//ruta prinicipal de la API
 app.use("/api/v1/clientes", require("./routes/clientRoutes"));
 
 app.get("/test", (req, res) => {
