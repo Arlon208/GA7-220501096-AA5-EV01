@@ -6,20 +6,21 @@ base de datos llamada "cliente.sql" a fin de importala y puedan ejecutar el prog
 <p>Si desea realizar pruebas puede utilizar POSTMAN con el fin de conectarse a la API, las URL de mapeo son:</p>
 <ul>
 <li>Crear Cliente: http://localhost:8080/api/v1/clientes/create
-  Debe entregarle un JSON con los datos Requeridos Ejemplo
-{
-    "id_cliente": 111626578888,
-    "nombre": "Arturo Londono",
-    "ciudad": "Zarzal",
-    "direccion": "Calle 4",
-    "telefono": "55555887"
+  Debe entregarle un JSON con los datos Requeridos Ejemplo:<br>
+{<br>
+    "id_cliente": 111626578888,<br>
+    "nombre": "Arturo Londono",<br>
+    "ciudad": "Zarzal",<br>
+    "direccion": "Calle 4",<br>
+    "telefono": "55555887"<br>
 }
 </li>
-<li>Actualizar Cliente: http://localhost:8080/api/v1/clientes/update/ID <- Cambiar el ID por el numero de cedula Debe entregar un JSON con los datos Ejemplo
-{   "nombre": "Marcela Rios",
-    "ciudad": "Bogota",
-    "direccion": "Calle 9A",
-    "telefono": "8875556"
+<li>Actualizar Cliente: http://localhost:8080/api/v1/clientes/update/ID <- Cambiar el ID por el numero de cedula Debe entregar un JSON con los datos Ejemplo: <br>
+{ <br>
+    "nombre": "Marcela Rios",<br>
+    "ciudad": "Bogota",<br>
+    "direccion": "Calle 9A",<br>
+    "telefono": "8875556"<br>
 }</li>
 <li>Listar Cliente: http://localhost:8080/api/v1/clientes/getall (Trae una lista de todos lo cliente en la base de datos)</li>  
 <li>Eliminar Cliente: http://localhost:8080/api/v1/clientes/delete/ID (Reemplazar el ID por la cedula del cliente a borrar)</li>
