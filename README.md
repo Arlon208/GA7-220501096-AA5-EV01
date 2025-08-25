@@ -5,19 +5,24 @@ base de datos llamada "cliente.sql" a fin de importala y puedan ejecutar el prog
 
 <p>Si desea realizar pruebas puede utilizar POSTMAN con el fin de conectarse a la API, las URL de mapeo son:</p>
 <ul>
-<li>Añadir Usuario: localhost:8080/cliente/add  
+<li>Crear Cliente: http://localhost:8080/api/v1/clientes/create
   Debe entregarle un JSON con los datos Requeridos Ejemplo
-  {
-    "idCliente": 1111111,
-    "nombre": "Roberto",
-    "ciudad": "Cartagena",
-    "direccion": "Calle 8c",
-    "telefono": "321888795"
-} 
+{
+    "id_cliente": 111626578888,
+    "nombre": "Arturo Londono",
+    "ciudad": "Zarzal",
+    "direccion": "Calle 4",
+    "telefono": "55555887"
+}
 </li>
-<li>Modificar Cliente: localhost:8080/cliente/update/ID (Para la modificacion debe settear los datos a cambiar dentro del metodo y luego ejecutar la orden en postman) </li>
-<li>Listar Cliente: localhost:8080/clientes (Trae una lista de todos lo cliente en la base de datos)</li>  
-<li>Eliminar Cliente: localhost:8080/cliente/delete/ID (Reemplazar el ID por la cedula del cliente a borrar</li>
+<li>Actualizar Cliente: http://localhost:8080/api/v1/clientes/update/ID <- Cambiar el ID por el numero de cedula Debe entregar un JSON con los datos Ejemplo
+{   "nombre": "Marcela Rios",
+    "ciudad": "Bogota",
+    "direccion": "Calle 9A",
+    "telefono": "8875556"
+}</li>
+<li>Listar Cliente: http://localhost:8080/api/v1/clientes/getall (Trae una lista de todos lo cliente en la base de datos)</li>  
+<li>Eliminar Cliente: http://localhost:8080/api/v1/clientes/delete/ID (Reemplazar el ID por la cedula del cliente a borrar)</li>
 </ul>
 
 <h3>Paquetes npm Usados</h3>
